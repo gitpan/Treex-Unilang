@@ -1,0 +1,64 @@
+
+use strict;
+use warnings;
+
+
+
+use ExtUtils::MakeMaker 6.31;
+
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'collection of blocks parametrized by language and language independent',
+  'AUTHOR' => 'Treex team <treex@ufal.mff.cuni.cz>',
+  'BUILD_REQUIRES' => {
+    'English' => '0',
+    'File::Find' => '0',
+    'File::Temp' => '0',
+    'Test::More' => '0',
+    'Test::Output' => '0',
+    'Treex::Core::Config' => '0'
+  },
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'Treex-Unilang',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Treex::Unilang',
+  'PREREQ_PM' => {
+    'File::Slurp' => '0',
+    'Moose' => '0',
+    'Treex::Core::Block' => '0',
+    'Treex::Core::Common' => '0',
+    'Treex::Core::Document' => '0',
+    'Treex::Core::DocumentReader' => '0',
+    'utf8' => '0'
+  },
+  'VERSION' => '0.06903_1',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
