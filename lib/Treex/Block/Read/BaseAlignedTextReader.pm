@@ -1,6 +1,6 @@
 package Treex::Block::Read::BaseAlignedTextReader;
-BEGIN {
-  $Treex::Block::Read::BaseAlignedTextReader::VERSION = '0.06903_1';
+{
+  $Treex::Block::Read::BaseAlignedTextReader::VERSION = '0.07191';
 }
 use Moose;
 use Treex::Core::Common;
@@ -51,7 +51,7 @@ Treex::Block::Read::BaseAlignedTextReader - abstract ancestor for parallel-corpo
 
 =head1 VERSION
 
-version 0.06903_1
+version 0.07191
 
 =head1 DESCRIPTION
 

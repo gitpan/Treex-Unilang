@@ -1,12 +1,10 @@
 package Treex::Tool::Segment::RuleBased;
-BEGIN {
-  $Treex::Tool::Segment::RuleBased::VERSION = '0.06903_1';
+{
+  $Treex::Tool::Segment::RuleBased::VERSION = '0.07191';
 }
 use utf8;
 use Moose;
 use Treex::Core::Common;
-#TODO: suspicious, Tool extends Block
-extends 'Treex::Block::W2A::SegmentOnNewlines';
 
 has use_paragraphs => (
     is      => 'ro',
@@ -71,14 +69,8 @@ sub get_segments {
     # Normalize whitespaces
     $text =~ s/\s+/ /gsm;
 
-    # This is the main regex
-    my ( $openings, $closings ) = ( $self->openings, $self->closings );
-    $text =~ s{
-        ([.?!])            # $1 = end-sentence punctuation
-        ([$closings]?)          # $2 = optional closing quote/bracket
-        \s                 #      space
-        ([$openings]?\p{Upper}) # $3 = uppercase letter (optionally preceded by opening quote)
-    }{$1$2\n$3}gsxm;
+    # This is the main work
+    $text = $self->split_at_terminal_punctuation($text);
 
     # Post-processing
     $text =~ s/<<<SEP>>>/\n/gsmx;
@@ -87,6 +79,18 @@ sub get_segments {
     $text =~ s/^\s+//gsxm;
 
     return split /\n/, $text;
+}
+
+sub split_at_terminal_punctuation {
+    my ( $self, $text ) = @_;
+    my ( $openings, $closings ) = ( $self->openings, $self->closings );
+    $text =~ s{
+        ([.?!])                 # $1 = end-sentence punctuation
+        ([$closings]?)          # $2 = optional closing quote/bracket
+        \s                      #      space
+        ([$openings]?\p{Upper}) # $3 = uppercase letter (optionally preceded by opening quote)
+    }{$1$2\n$3}gsxm;
+    return $text;
 }
 
 1;
@@ -129,7 +133,11 @@ Returns list of sentences
 
 =item segment_text
 
-Do segmentation
+Do the segmentation (handling C<use_paragraphs> and C<use_lines>)
+
+=item $text = split_at_terminal_punctuation($text)
+
+Adds newlines after terminal punctuation followed by an uppercase letter. 
 
 =item unbreakers
 

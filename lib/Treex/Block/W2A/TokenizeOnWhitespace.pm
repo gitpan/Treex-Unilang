@@ -1,6 +1,6 @@
 package Treex::Block::W2A::TokenizeOnWhitespace;
-BEGIN {
-  $Treex::Block::W2A::TokenizeOnWhitespace::VERSION = '0.06903_1';
+{
+  $Treex::Block::W2A::TokenizeOnWhitespace::VERSION = '0.07191';
 }
 use Moose;
 use Treex::Core::Common;
