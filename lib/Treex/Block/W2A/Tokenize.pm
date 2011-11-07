@@ -1,6 +1,6 @@
 package Treex::Block::W2A::Tokenize;
 {
-  $Treex::Block::W2A::Tokenize::VERSION = '0.07191';
+  $Treex::Block::W2A::Tokenize::VERSION = '0.07194';
 }
 use utf8;
 use Moose;

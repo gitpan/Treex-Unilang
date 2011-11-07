@@ -1,5 +1,11 @@
 Revision history of the Treex-Unilang distribution:
 
+0.07194       2011-11-07
+    - added dependency on current version of Treex::Core
+
+0.07191       2011-11-06
+    - first non-dev release
+
 0.06903_1     2011-10-03
 
     - the first release at CPAN

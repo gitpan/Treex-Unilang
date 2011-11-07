@@ -29,6 +29,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "File::Slurp" => 0,
     "Moose" => 0,
+    "Treex::Core" => "0.07191",
     "Treex::Core::Block" => 0,
     "Treex::Core::Common" => 0,
     "Treex::Core::Document" => 0,
@@ -37,7 +38,7 @@ my %WriteMakefileArgs = (
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.07191",
+  "VERSION" => "0.07194",
   "test" => {
     "TESTS" => "t/*.t"
   }

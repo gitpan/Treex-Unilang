@@ -22,6 +22,7 @@ name: Treex-Unilang
 requires:
   File::Slurp: 0
   Moose: 0
+  Treex::Core: 0.07191
   Treex::Core::Block: 0
   Treex::Core::Common: 0
   Treex::Core::Document: 0
@@ -29,4 +30,4 @@ requires:
   strict: 0
   utf8: 0
   warnings: 0
-version: 0.07191
+version: 0.07194
