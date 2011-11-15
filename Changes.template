@@ -1,6 +1,6 @@
 Revision history of the Treex-Unilang distribution:
 
-0.07297	       2011-11-15
+VERSION       DATE
     - added Read::CoNLLX and Write::CoNLLX
     - added MSTperl parser
 

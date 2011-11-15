@@ -1,4 +1,5 @@
 Changes
+Changes.template
 LICENSE
 MANIFEST
 META.yml
@@ -7,10 +8,14 @@ README
 lib/Treex/Block/Read/AlignedSentences.pm
 lib/Treex/Block/Read/BaseAlignedReader.pm
 lib/Treex/Block/Read/BaseAlignedTextReader.pm
+lib/Treex/Block/Read/CoNLLX.pm
+lib/Treex/Block/W2A/BaseChunkParser.pm
+lib/Treex/Block/W2A/ParseMSTperl.pm
 lib/Treex/Block/W2A/ResegmentSentences.pm
 lib/Treex/Block/W2A/SegmentOnNewlines.pm
 lib/Treex/Block/W2A/Tokenize.pm
 lib/Treex/Block/W2A/TokenizeOnWhitespace.pm
+lib/Treex/Block/Write/CoNLLX.pm
 lib/Treex/Tool/Segment/RuleBased.pm
 lib/Treex/Unilang.pm
 perlcritic.rc

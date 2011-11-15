@@ -29,16 +29,23 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "File::Slurp" => 0,
     "Moose" => 0,
+    "Treex::Block::Read::BaseTextReader" => 0,
+    "Treex::Block::Write::Redirectable" => 0,
     "Treex::Core" => "0.07191",
     "Treex::Core::Block" => 0,
     "Treex::Core::Common" => 0,
     "Treex::Core::Document" => 0,
     "Treex::Core::DocumentReader" => 0,
+    "Treex::Core::Resource" => 0,
+    "Treex::Tool::Parser::MSTperl::Config" => 0,
+    "Treex::Tool::Parser::MSTperl::Node" => 0,
+    "Treex::Tool::Parser::MSTperl::Parser" => 0,
+    "Treex::Tool::Parser::MSTperl::Sentence" => 0,
     "strict" => 0,
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.07194",
+  "VERSION" => "0.07297",
   "test" => {
     "TESTS" => "t/*.t"
   }

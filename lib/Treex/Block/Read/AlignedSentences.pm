@@ -1,6 +1,6 @@
 package Treex::Block::Read::AlignedSentences;
 {
-  $Treex::Block::Read::AlignedSentences::VERSION = '0.07194';
+  $Treex::Block::Read::AlignedSentences::VERSION = '0.07297';
 }
 use Moose;
 use Treex::Core::Common;
@@ -50,7 +50,7 @@ Treex::Block::Read::AlignedSentences
 
 =head1 VERSION
 
-version 0.07194
+version 0.07297
 
 =head1 SYNOPSIS
 
