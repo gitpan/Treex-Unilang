@@ -30,8 +30,8 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "File::Slurp" => 0,
     "Moose" => 0,
+    "Moose::Role" => 0,
     "Treex::Block::Read::BaseTextReader" => 0,
-    "Treex::Block::W2A::AnalysisWithAlignedTrees" => 0,
     "Treex::Block::Write::BaseTextWriter" => 0,
     "Treex::Core" => "0.08051",
     "Treex::Core::Block" => 0,
@@ -47,7 +47,7 @@ my %WriteMakefileArgs = (
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.08055",
+  "VERSION" => "0.08056",
   "test" => {
     "TESTS" => "t/*.t"
   }

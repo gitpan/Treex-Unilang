@@ -8,6 +8,7 @@ lib/Treex/Block/Read/AlignedSentences.pm
 lib/Treex/Block/Read/BaseAlignedReader.pm
 lib/Treex/Block/Read/BaseAlignedTextReader.pm
 lib/Treex/Block/Read/CoNLLX.pm
+lib/Treex/Block/W2A/AnalysisWithAlignedTrees.pm
 lib/Treex/Block/W2A/BaseChunkParser.pm
 lib/Treex/Block/W2A/ParseMSTperl.pm
 lib/Treex/Block/W2A/ResegmentSentences.pm

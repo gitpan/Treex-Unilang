@@ -1,6 +1,6 @@
 package Treex::Block::Read::CoNLLX;
 {
-  $Treex::Block::Read::CoNLLX::VERSION = '0.08055';
+  $Treex::Block::Read::CoNLLX::VERSION = '0.08056';
 }
 use Moose;
 use Treex::Core::Common;
@@ -89,7 +89,7 @@ Treex::Block::Read::CoNLLX
 
 =head1 VERSION
 
-version 0.08055
+version 0.08056
 
 =head1 DESCRIPTION
 

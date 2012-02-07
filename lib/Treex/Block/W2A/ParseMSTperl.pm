@@ -1,6 +1,6 @@
 package Treex::Block::W2A::ParseMSTperl;
 {
-  $Treex::Block::W2A::ParseMSTperl::VERSION = '0.08055';
+  $Treex::Block::W2A::ParseMSTperl::VERSION = '0.08056';
 }
 use Moose;
 use Treex::Core::Common;
@@ -167,7 +167,7 @@ Treex::Block::W2A::ParseMSTperl
 
 =head1 VERSION
 
-version 0.08055
+version 0.08056
 
 =head1 DECRIPTION
 
