@@ -1,11 +1,10 @@
 package Treex::Block::Write::CoNLLX;
 {
-  $Treex::Block::Write::CoNLLX::VERSION = '0.07297';
+  $Treex::Block::Write::CoNLLX::VERSION = '0.08055';
 }
 use Moose;
 use Treex::Core::Common;
-extends 'Treex::Core::Block';
-with 'Treex::Block::Write::Redirectable';
+extends 'Treex::Block::Write::BaseTextWriter';
 
 my %FALLBACK_FOR = ( 'pos' => 'tag', 'deprel' => 'afun', );
 
@@ -20,6 +19,7 @@ has 'is_coord_conjunction_within_afun' => ( is       => 'rw', isa => 'Bool', def
 
 has _was => ( is => 'rw', default => sub{{}} );
 
+has '+extension' => ( default => '.conll' );
 
 sub process_atree {
     my ( $self, $atree ) = @_;
@@ -110,7 +110,7 @@ Treex::Block::Write::CoNLLX
 
 =head1 VERSION
 
-version 0.07297
+version 0.08055
 
 =head1 DESCRIPTION
 

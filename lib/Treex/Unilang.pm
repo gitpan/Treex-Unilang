@@ -1,15 +1,15 @@
 package Treex::Unilang;
 {
-  $Treex::Unilang::VERSION = '0.07297';
+  $Treex::Unilang::VERSION = '0.08055';
 }
 use strict;
 use warnings;
-use Treex::Core 0.07191;
+use Treex::Core 0.08051;
 
 1;
 
 __END__
-
+#TODO this is module just to keep synchronized Unilang with Core
 =pod
 
 =encoding utf-8
@@ -20,13 +20,7 @@ Treex::Unilang - collection of blocks parametrized by language and language inde
 
 =head1 VERSION
 
-version 0.07297
-
-=head1 SYNOPSIS
-
- use Treex::Unilang;
-
- #TODO
+version 0.08055
 
 =head1 DESCRIPTION
 

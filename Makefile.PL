@@ -17,6 +17,7 @@ my %WriteMakefileArgs = (
     "File::Temp" => 0,
     "Test::More" => 0,
     "Test::Output" => 0,
+    "Test::Requires" => 0,
     "Treex::Core::Config" => 0
   },
   "CONFIGURE_REQUIRES" => {
@@ -30,8 +31,9 @@ my %WriteMakefileArgs = (
     "File::Slurp" => 0,
     "Moose" => 0,
     "Treex::Block::Read::BaseTextReader" => 0,
-    "Treex::Block::Write::Redirectable" => 0,
-    "Treex::Core" => "0.07191",
+    "Treex::Block::W2A::AnalysisWithAlignedTrees" => 0,
+    "Treex::Block::Write::BaseTextWriter" => 0,
+    "Treex::Core" => "0.08051",
     "Treex::Core::Block" => 0,
     "Treex::Core::Common" => 0,
     "Treex::Core::Document" => 0,
@@ -45,7 +47,7 @@ my %WriteMakefileArgs = (
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.07297",
+  "VERSION" => "0.08055",
   "test" => {
     "TESTS" => "t/*.t"
   }

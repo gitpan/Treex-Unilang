@@ -1,6 +1,6 @@
 package Treex::Block::W2A::Tokenize;
 {
-  $Treex::Block::W2A::Tokenize::VERSION = '0.07297';
+  $Treex::Block::W2A::Tokenize::VERSION = '0.08055';
 }
 use utf8;
 use Moose;
@@ -18,11 +18,17 @@ override 'tokenize_sentence' => sub {
     $sentence = $self->_mark_urls($sentence);
 
     # the following characters (double-characters) are separated everywhere
-    $sentence =~ s/(;|!|<|>|\{|\}|\[|\]|\(|\)|\?|\#|\$|£|\%|\&|``|\'\'|‘‘|"|“|”|«|»|--|–|—|„|‚|\*|\^)/ $1 /g; ## no critic (RegularExpressions::ProhibitComplexRegexes) this is not complex
+    $sentence =~ s/(;|!|<|>|\{|\}|\[|\]|\(|\)|\?|\#|\$|£|\%|\&|``|\'\'|‘‘|"|“|”|«|»|--|–|—|„|‚|‘|\*|\^|\|)/ $1 /g; ## no critic (RegularExpressions::ProhibitComplexRegexes) this is not complex
 
-    # short hyphen is separated if it is followed or preceeded by non-alphanuneric character and is not a part of --
-    $sentence =~ s/([^\-\w])\-([^\-])/$1 - $2/g;
+    # short hyphen is separated if it is followed or preceeded by non-alphanuneric character and is not a part of --, or a unary minus
+    $sentence =~ s/([^\-\w])\-([^\-0-9])/$1 - $2/g;
+    $sentence =~ s/([0-9]\s+)\-([0-9])/$1 - $2/g; # preceded by a number - not a unary minus
     $sentence =~ s/([^\-])\-([^\-\w])/$1 - $2/g;
+    
+    # plus is separated everywhere, except at the end of a word (separated by a space) and as unary plus
+    $sentence =~ s/(\w)\+(\w)/$1 + $2/g;
+    $sentence =~ s/([0-9]\s*)\+([0-9])/$1 + $2/g;
+    $sentence =~ s/\+([^\w\+])/+ $1/g;
 
     # apostroph is separated if it is followed or preceeded by non-alphanumeric character, is not part of '', and is not followed by a digit (e.g. '60).
     $sentence =~ s/([^\'’\w])([\'’])([^\'’\d])/$1 $2 $3/g;

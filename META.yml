@@ -8,12 +8,13 @@ build_requires:
   File::Temp: 0
   Test::More: 0
   Test::Output: 0
+  Test::Requires: 0
   Treex::Core::Config: 0
   perl: 5.006
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -23,8 +24,9 @@ requires:
   File::Slurp: 0
   Moose: 0
   Treex::Block::Read::BaseTextReader: 0
-  Treex::Block::Write::Redirectable: 0
-  Treex::Core: 0.07191
+  Treex::Block::W2A::AnalysisWithAlignedTrees: 0
+  Treex::Block::Write::BaseTextWriter: 0
+  Treex::Core: 0.08051
   Treex::Core::Block: 0
   Treex::Core::Common: 0
   Treex::Core::Document: 0
@@ -37,4 +39,4 @@ requires:
   strict: 0
   utf8: 0
   warnings: 0
-version: 0.07297
+version: 0.08055

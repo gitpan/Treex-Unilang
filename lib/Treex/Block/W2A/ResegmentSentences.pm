@@ -1,6 +1,6 @@
 package Treex::Block::W2A::ResegmentSentences;
 {
-  $Treex::Block::W2A::ResegmentSentences::VERSION = '0.07297';
+  $Treex::Block::W2A::ResegmentSentences::VERSION = '0.08055';
 }
 use Moose;
 use Treex::Core::Common;

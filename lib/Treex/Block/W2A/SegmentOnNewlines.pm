@@ -1,6 +1,6 @@
 package Treex::Block::W2A::SegmentOnNewlines;
 {
-  $Treex::Block::W2A::SegmentOnNewlines::VERSION = '0.07297';
+  $Treex::Block::W2A::SegmentOnNewlines::VERSION = '0.08055';
 }
 use Moose;
 use Treex::Core::Common;
@@ -102,7 +102,7 @@ Treex::Block::W2A::SegmentOnNewlines - segment text on new lines
 
 =head1 VERSION
 
-version 0.07297
+version 0.08055
 
 =head1 DESCRIPTION
 

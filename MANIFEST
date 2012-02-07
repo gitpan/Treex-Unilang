@@ -1,5 +1,4 @@
 Changes
-Changes.template
 LICENSE
 MANIFEST
 META.yml
@@ -22,12 +21,12 @@ perlcritic.rc
 t/00-compile.t
 t/aligned_sentences.t
 t/author-critic.t
+t/author-test-eol.t
 t/base_aligned.t
 t/base_aligned_text.t
 t/release-cpan-changes.t
 t/release-dist-manifest.t
 t/release-distmeta.t
-t/release-eol.t
 t/release-minimum-version.t
 t/release-mojibake.t
 t/release-no-tabs.t
