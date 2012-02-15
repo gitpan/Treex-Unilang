@@ -1,6 +1,6 @@
 package Treex::Block::W2A::ParseMSTperl;
-{
-  $Treex::Block::W2A::ParseMSTperl::VERSION = '0.08056';
+BEGIN {
+  $Treex::Block::W2A::ParseMSTperl::VERSION = '0.08170';
 }
 use Moose;
 use Treex::Core::Common;
@@ -26,13 +26,19 @@ has 'model_from_share' => (
 has 'model_name' => (
     is      => 'ro',
     isa     => 'Str',
-    default => 'conll_2007',
+    default => 'conll_2007_small',
 );
 
 has 'model_dir' => (
     is      => 'ro',
     isa     => 'Str',
-    default => 'data/models/mst_perl_parser/en',
+    default => 'data/models/parser/mst_perl/en',
+);
+
+has 'model_gz' => (
+    is      => 'ro',
+    isa     => 'Bool',
+    default => '0',
 );
 
 has parser => (
@@ -64,16 +70,33 @@ sub _build_parser {
     my $parser = Treex::Tool::Parser::MSTperl::Parser->new(
         config => $config
     );
+    my $model_file_name = (
+	$self->model_gz
+	?
+	"$base_name.model.gz"
+	:
+	"$base_name.model"
+	);
+
     my $model_file = (
         $self->model_from_share
         ?
-            require_file_from_share( "$base_name.model", ref($self) )
+            require_file_from_share( $model_file_name, ref($self) )
         :
-            "$base_name.model"
+            $model_file_name
     );
     $parser->load_model($model_file);
 
     return $parser;
+}
+
+sub BUILD {
+    my $self = shift;
+    
+    # enforce parser initialization
+    $self->parser;
+    
+    return;
 }
 
 sub parse_chunk {
@@ -167,7 +190,7 @@ Treex::Block::W2A::ParseMSTperl
 
 =head1 VERSION
 
-version 0.08056
+version 0.08170
 
 =head1 DECRIPTION
 

@@ -1,5 +1,8 @@
 Revision history of the Treex-Unilang distribution:
 
+0.08170       2012-02-16
+    - added Featurama tagger
+
 0.08056       2012-02-07
     - use new version of MSTperl parser and Treex::Core
 

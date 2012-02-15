@@ -4,52 +4,50 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.30;
+use ExtUtils::MakeMaker 6.31;
 
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "collection of blocks parametrized by language and language independent",
-  "AUTHOR" => "Treex team <treex\@ufal.mff.cuni.cz>",
-  "BUILD_REQUIRES" => {
-    "English" => 0,
-    "File::Find" => 0,
-    "File::Temp" => 0,
-    "Test::More" => 0,
-    "Test::Output" => 0,
-    "Test::Requires" => 0,
-    "Treex::Core::Config" => 0
+  'ABSTRACT' => 'collection of blocks parametrized by language and language independent',
+  'AUTHOR' => 'Treex team <treex@ufal.mff.cuni.cz>',
+  'BUILD_REQUIRES' => {
+    'English' => '0',
+    'File::Find' => '0',
+    'File::Temp' => '0',
+    'Test::More' => '0',
+    'Test::Output' => '0',
+    'Treex::Core::Config' => '0'
   },
-  "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30"
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
   },
-  "DISTNAME" => "Treex-Unilang",
-  "EXE_FILES" => [],
-  "LICENSE" => "perl",
-  "NAME" => "Treex::Unilang",
-  "PREREQ_PM" => {
-    "File::Slurp" => 0,
-    "Moose" => 0,
-    "Moose::Role" => 0,
-    "Treex::Block::Read::BaseTextReader" => 0,
-    "Treex::Block::Write::BaseTextWriter" => 0,
-    "Treex::Core" => "0.08051",
-    "Treex::Core::Block" => 0,
-    "Treex::Core::Common" => 0,
-    "Treex::Core::Document" => 0,
-    "Treex::Core::DocumentReader" => 0,
-    "Treex::Core::Resource" => 0,
-    "Treex::Tool::Parser::MSTperl::Config" => 0,
-    "Treex::Tool::Parser::MSTperl::Node" => 0,
-    "Treex::Tool::Parser::MSTperl::Parser" => 0,
-    "Treex::Tool::Parser::MSTperl::Sentence" => 0,
-    "strict" => 0,
-    "utf8" => 0,
-    "warnings" => 0
+  'DISTNAME' => 'Treex-Unilang',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Treex::Unilang',
+  'PREREQ_PM' => {
+    'File::Slurp' => '0',
+    'Moose' => '0',
+    'Moose::Exporter' => '0',
+    'Moose::Role' => '0',
+    'Treex::Block::Read::BaseTextReader' => '0',
+    'Treex::Block::Write::BaseTextWriter' => '0',
+    'Treex::Core' => '0.08157',
+    'Treex::Core::Block' => '0',
+    'Treex::Core::Common' => '0',
+    'Treex::Core::Document' => '0',
+    'Treex::Core::DocumentReader' => '0',
+    'Treex::Core::Resource' => '0',
+    'Treex::Tool::Parser::MSTperl::Config' => '0',
+    'Treex::Tool::Parser::MSTperl::Node' => '0',
+    'Treex::Tool::Parser::MSTperl::Parser' => '0',
+    'Treex::Tool::Parser::MSTperl::Sentence' => '0',
+    'utf8' => '0'
   },
-  "VERSION" => "0.08056",
-  "test" => {
-    "TESTS" => "t/*.t"
+  'VERSION' => '0.08170',
+  'test' => {
+    'TESTS' => 't/*.t'
   }
 );
 

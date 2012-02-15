@@ -1,6 +1,6 @@
 package Treex::Block::W2A::TokenizeOnWhitespace;
-{
-  $Treex::Block::W2A::TokenizeOnWhitespace::VERSION = '0.08056';
+BEGIN {
+  $Treex::Block::W2A::TokenizeOnWhitespace::VERSION = '0.08170';
 }
 use Moose;
 use Treex::Core::Common;
@@ -56,6 +56,8 @@ __END__
 Treex::Block::W2A::TokenizeOnWhitespace - Base tokenizer, splits on whitespaces, fills no_space_after
 
 =head1 VERSION
+
+version 0.08170
 
 =head1 DESCRIPTION
 

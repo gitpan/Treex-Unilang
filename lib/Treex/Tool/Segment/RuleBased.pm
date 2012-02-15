@@ -1,6 +1,6 @@
 package Treex::Tool::Segment::RuleBased;
-{
-  $Treex::Tool::Segment::RuleBased::VERSION = '0.08056';
+BEGIN {
+  $Treex::Tool::Segment::RuleBased::VERSION = '0.08170';
 }
 use utf8;
 use Moose;
@@ -105,6 +105,8 @@ Treex::Tool::Segment::RuleBased - Rule based pseudo language-independent sentenc
 
 =head1 VERSION
 
+version 0.08170
+
 =head1 DESCRIPTION
 
 Sentence boundaries are detected based on a regex rules
@@ -166,4 +168,3 @@ Martin Popel <popel@ufal.mff.cuni.cz>
 Copyright © 2011 by Institute of Formal and Applied Linguistics, Charles University in Prague
 
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
-

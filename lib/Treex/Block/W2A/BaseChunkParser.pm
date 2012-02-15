@@ -1,6 +1,6 @@
 package Treex::Block::W2A::BaseChunkParser;
-{
-  $Treex::Block::W2A::BaseChunkParser::VERSION = '0.08056';
+BEGIN {
+  $Treex::Block::W2A::BaseChunkParser::VERSION = '0.08170';
 }
 use Moose;
 use Treex::Core::Common;

@@ -1,6 +1,6 @@
 package Treex::Block::W2A::ResegmentSentences;
-{
-  $Treex::Block::W2A::ResegmentSentences::VERSION = '0.08056';
+BEGIN {
+  $Treex::Block::W2A::ResegmentSentences::VERSION = '0.08170';
 }
 use Moose;
 use Treex::Core::Common;
@@ -111,6 +111,8 @@ Treex::Block::W2A::ResegmentSentences
 
 =head1 VERSION
 
+version 0.08170
+
 =head1 DESCRIPTION
 
 If the sentence segmenter says that the current sentence is
@@ -140,4 +142,3 @@ Martin Popel <popel@ufal.mff.cuni.cz>
 Copyright © 2011 by Institute of Formal and Applied Linguistics, Charles University in Prague
 
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
-

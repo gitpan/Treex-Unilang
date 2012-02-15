@@ -1,4 +1,3 @@
-#!/usr/bin/perl
 
 BEGIN {
   unless ($ENV{RELEASE_TESTING}) {
@@ -7,14 +6,11 @@ BEGIN {
   }
 }
 
-use 5.006;
 use strict;
 use warnings;
 use Test::More;
 
-use Test::Requires {
-    'Test::Version' => 0.04,
-};
+eval 'use Test::EOL';
+plan skip_all => 'Test::EOL required' if $@;
 
-version_all_ok;
-done_testing;
+all_perl_files_ok({ trailing_whitespace => 1 });

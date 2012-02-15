@@ -1,6 +1,6 @@
 package Treex::Block::W2A::Tokenize;
-{
-  $Treex::Block::W2A::Tokenize::VERSION = '0.08056';
+BEGIN {
+  $Treex::Block::W2A::Tokenize::VERSION = '0.08170';
 }
 use utf8;
 use Moose;
@@ -88,6 +88,8 @@ Treex::Block::W2A::Tokenize - language independent rule based tokenizer
 
 =head1 VERSION
 
+version 0.08170
+
 =head1 DESCRIPTION
 
 Each sentence is split into a sequence of tokens using a series of regexs.
@@ -108,4 +110,3 @@ Martin Popel <popel@ufal.mff.cuni.cz>
 Copyright © 2011 by Institute of Formal and Applied Linguistics, Charles University in Prague
 
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
-

@@ -1,6 +1,6 @@
 package Treex::Block::W2A::AnalysisWithAlignedTrees;
-{
-  $Treex::Block::W2A::AnalysisWithAlignedTrees::VERSION = '0.08056';
+BEGIN {
+  $Treex::Block::W2A::AnalysisWithAlignedTrees::VERSION = '0.08170';
 }
 
 # TODO: rename once the role of this block is absolutely clear
@@ -341,7 +341,7 @@ Treex::Block::W2A::AnalysisWithAlignedTrees
 
 =head1 VERSION
 
-version 0.08056
+version 0.08170
 
 =head1 DECRIPTION
 
