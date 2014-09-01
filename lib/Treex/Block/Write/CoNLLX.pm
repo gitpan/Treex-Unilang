@@ -1,7 +1,7 @@
 package Treex::Block::Write::CoNLLX;
-BEGIN {
-  $Treex::Block::Write::CoNLLX::VERSION = '0.08170';
-}
+$Treex::Block::Write::CoNLLX::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 extends 'Treex::Block::Write::BaseTextWriter';
@@ -16,6 +16,7 @@ has 'feat_attribute'                   => ( is       => 'rw', isa => 'Str', defa
 has 'is_member_within_afun'            => ( is       => 'rw', isa => 'Bool', default => 0 );
 has 'is_shared_modifier_within_afun'   => ( is       => 'rw', isa => 'Bool', default => 0 );
 has 'is_coord_conjunction_within_afun' => ( is       => 'rw', isa => 'Bool', default => 0 );
+has 'randomly_select_sentences_ratio'  => ( is       => 'rw', isa => 'Num',  default => 1 );
 
 has _was => ( is => 'rw', default => sub{{}} );
 
@@ -23,10 +24,14 @@ has '+extension' => ( default => '.conll' );
 
 sub process_atree {
     my ( $self, $atree ) = @_;
+
+    # if only random sentences are printed
+    return if rand() > $self->randomly_select_sentences_ratio;
+
     foreach my $anode ( $atree->get_descendants( { ordered => 1 } ) ) {
         my ( $lemma, $pos, $cpos, $deprel ) =
             map { $self->get_attribute( $anode, $_ ) }
-            qw(lemma pos cpos deprel);
+            (qw(lemma pos cpos deprel)); # "conll/" will be prefixed if needed; see get_attribute()
 
         #my $ctag  = $self->get_coarse_grained_tag($tag);
 
@@ -42,19 +47,25 @@ sub process_atree {
             $feat = $anode->conll_feat();
         }
         elsif ( $self->feat_attribute eq 'iset' && $anode->get_iset_pairs_list() ) {
-            my @list = $anode->get_iset_pairs_list();
-            my @pairs;
-            for ( my $i = 0; $i <= $#list; $i += 2 )
-            {
-                push( @pairs, "$list[$i]=$list[$i+1]" );
-            }
-            $feat = join( '|', @pairs );
+            $feat = $anode->get_iset_conll_feat();
         }
         else {
             $feat = '_';
         }
         my $p_ord = $anode->get_parent->ord;
-        print { $self->_file_handle } join( "\t", $anode->ord, $anode->form, $lemma, $cpos, $pos, $feat, $p_ord, $deprel ) . "\n";
+        # Make sure that values are not empty and that they do not contain spaces.
+        my @values = ($anode->ord, $anode->form, $lemma, $cpos, $pos, $feat, $p_ord, $deprel);
+        @values = map
+        {
+            my $x = $_ // '_';
+            $x =~ s/^\s+//;
+            $x =~ s/\s+$//;
+            $x =~ s/\s+/_/g;
+            $x = '_' if($x eq '');
+            $x
+        }
+        (@values);
+        print { $self->_file_handle } join( "\t", @values ) . "\n";
     }
     print { $self->_file_handle } "\n" if $atree->get_descendants;
     return;
@@ -67,9 +78,9 @@ sub get_attribute {
     if ( $from eq 'autodetect' ) {
         my $before = $self->_was->{$name};
         if ( !defined $before ) {
-            $value = $anode->get_attr("conll/$from");
+            $value = $anode->get_attr("conll/$name");
             if ( defined $value ) {
-                $self->_was->{$name} = "conll/$from";
+                $self->_was->{$name} = "conll/$name";
             }
             else {
                 my $fallback = $FALLBACK_FOR{$name}
@@ -110,7 +121,7 @@ Treex::Block::Write::CoNLLX
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 DESCRIPTION
 

@@ -1,14 +1,16 @@
 package Treex::Block::Read::AlignedSentences;
-BEGIN {
-  $Treex::Block::Read::AlignedSentences::VERSION = '0.08170';
-}
+$Treex::Block::Read::AlignedSentences::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 extends 'Treex::Block::Read::BaseAlignedTextReader';
 
 sub next_document {
     my ($self) = @_;
+
     my $texts_ref = $self->next_document_texts();
+
     return if !defined $texts_ref;
 
     my %sentences =
@@ -50,7 +52,7 @@ Treex::Block::Read::AlignedSentences
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 SYNOPSIS
 

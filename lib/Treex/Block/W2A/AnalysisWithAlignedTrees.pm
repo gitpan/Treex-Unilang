@@ -1,19 +1,21 @@
 package Treex::Block::W2A::AnalysisWithAlignedTrees;
-BEGIN {
-  $Treex::Block::W2A::AnalysisWithAlignedTrees::VERSION = '0.08170';
-}
+$Treex::Block::W2A::AnalysisWithAlignedTrees::VERSION = '0.13095';
+use strict;
+use warnings;
 
 # TODO: rename once the role of this block is absolutely clear
 # (it is something like things that both LabelMIRA and ParseMSTperl need
 # to work with parallel attributes)
+# And now it is even worse as it also ensures truncating Czech lemmas...
+# it is something like MSTperlAttributeHelper
 
 use Moose::Role;
 use Treex::Core::Common;
-
+use Treex::Tool::Lexicon::CS;
 use Treex::Tool::Parser::MSTperl::Node;
 
 # use features from aligned tree
-has 'use_aligned_tree' => ( isa => 'Bool', is => 'ro', default => '1' );
+has 'use_aligned_tree' => ( isa => 'Bool', is => 'ro', default => '0' );
 
 # the language of the tree which is already parsed and is accessed via the
 # 'aligned_' prefix, eg. en
@@ -155,8 +157,14 @@ sub _get_field_value {
                 my $parent = $node->get_parent();
                 $field_value = $parent->get_attr('ord');
 
-                # language-specific coarse grained tag
+            } elsif ( $field_name eq 'trunc_lemma' ) {
+                # lemma without details - works only for Czech 
+                $field_value =
+                    Treex::Tool::Lexicon::CS::truncate_lemma (
+                        $node->get_attr('lemma'), 1 );
+
             } elsif ( $field_name eq 'coarse_tag' ) {
+                # language-specific coarse grained tag
                 $field_value =
                     $self->get_coarse_grained_tag( $node->get_attr('tag') );
 
@@ -341,7 +349,7 @@ Treex::Block::W2A::AnalysisWithAlignedTrees
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 DECRIPTION
 

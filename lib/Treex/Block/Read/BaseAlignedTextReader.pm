@@ -1,11 +1,12 @@
 package Treex::Block::Read::BaseAlignedTextReader;
-BEGIN {
-  $Treex::Block::Read::BaseAlignedTextReader::VERSION = '0.08170';
-}
+$Treex::Block::Read::BaseAlignedTextReader::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 extends 'Treex::Block::Read::BaseAlignedReader';
 use File::Slurp;
+use Data::Dumper;
 
 #has lines_per_doc => ( isa => 'Int',  is => 'ro', default => 0 );
 #has merge_files   => ( isa => 'Bool', is => 'ro', default => 0 );
@@ -21,7 +22,13 @@ use File::Slurp;
 sub next_document_texts {
     my ($self) = @_;
 
-    my %mapping = $self->next_filenames() or return;
+    #print STDERR __PACKAGE__ . ":" . __LINE__ . "\n";
+
+    my $filenames = $self->next_filenames();
+    return if ! $filenames;
+
+    my %mapping = %{$filenames};
+
     my %texts;
 #    if ( $self->lines_per_doc ) {    # TODO: option lines_per_document not implemented
 #        log_fatal "option lines_per_document not implemented for aligned readers yet";
@@ -51,7 +58,7 @@ Treex::Block::Read::BaseAlignedTextReader - abstract ancestor for parallel-corpo
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 DESCRIPTION
 

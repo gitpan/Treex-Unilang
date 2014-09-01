@@ -1,17 +1,41 @@
 package Treex::Block::W2A::BaseChunkParser;
-BEGIN {
-  $Treex::Block::W2A::BaseChunkParser::VERSION = '0.08170';
-}
+$Treex::Block::W2A::BaseChunkParser::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 extends 'Treex::Core::Block';
 
 has 'reparse' => ( is => 'rw', isa => 'Bool', default => 0 );
 
+has max_chunk_size => (
+    is => 'ro',
+    isa => 'Int',
+    default => 150,
+    documentation => 'If a chunk contains more tokens, it is split and each into shorter chunks (each except for the last has max_chunk_size tokens), '
+                   . 'so these chunks are parsed separately. '
+                   . 'This parameter serves as a safety check for extremely long sentences and parsers that may fail on such sentences. 0 means do not split.',
+);
+
+sub split_long_chunks {
+    my ($self, $chunk) = @_;
+    my $max_size = $self->max_chunk_size;
+    return $chunk if !$max_size;
+    return $chunk if @$chunk < $max_size;
+
+    use List::MoreUtils qw(natatime);
+    my $iterator = natatime($max_size, @$chunk);
+    my @result;
+    while (my @words = $iterator->()){
+        push @result, \@words;
+    }
+    return @result;
+}
+
 sub process_atree {
     my ( $self, $a_root ) = @_;
     my @a_nodes = $a_root->get_descendants( { ordered => 1 } );
-
+    
     # Skip the sentence if this block is used in "reparse" mode and no reparsing is needed
     return 1 if $self->reparse && !$a_root->get_attr('reparse');
 
@@ -30,12 +54,19 @@ sub process_atree {
     }
 
     # Sort the chunks from the shortest to the longest one,
-    # delete possible full-sentence chunks
-    my @sorted_chunks = sort { @$a <=> @$b } grep { @$_ < @a_nodes } values %chunks;
+    # (delete possible full-sentence chunks if they were marked),
+    # split too long chunks.
+    # and add the full sentence as the last chunk (or more chunks if too long).
+    my @sorted_chunks =
+        sort { @$a <=> @$b } 
+        map {$self->split_long_chunks($_)}
+        grep { @$_ < @a_nodes }
+        values %chunks;
+    push @sorted_chunks, $self->split_long_chunks(\@a_nodes);
 
     # Parse each chunk independently (plus the whole sentence)
     CHUNK:
-    foreach my $chunk ( @sorted_chunks, \@a_nodes ) {
+    foreach my $chunk (@sorted_chunks) {
 
         # There can be a nested chunk inside $chunk,
         # which is shorter and therefore already parsed.
@@ -47,7 +78,7 @@ sub process_atree {
         # leave the brackets aside to be hanged on the root of the chunk later.
         # (Parsers would mostly guess this right, but not always.)
         my ( $lrb, $rrb ) = @ch_nodes[ 0, -1 ];
-        if ( $lrb->form eq '(' && $rrb->form eq ')' ) {
+        if ( $lrb && $rrb && $lrb->form eq '(' && $rrb->form eq ')' ) {
             shift @ch_nodes;
             pop @ch_nodes;
         }
@@ -104,9 +135,17 @@ sub parse_chunk {
 
 __END__
 
-=over
+=encoding utf-8
 
-=item Treex::Block::W2A::BaseChunkParser
+=head1 NAME 
+
+Treex::Block::W2A::BaseChunkParser
+
+=head1 VERSION
+
+version 0.13095
+
+=head1 DESCRIPTION
 
 This class serves as a base class for dependency parsers
 that just need to override the C<parse_chunk> method.
@@ -114,8 +153,13 @@ that just need to override the C<parse_chunk> method.
 The goal of segmenting a sentence into chunks is to guarantee that each chunk
 will be parsed into its own subtree.
 
-PARAMETERS:
-reparse - process only bundles where the root node has the attribute C<reparse> set
+=head1 PARAMETERS
+
+=over 
+   
+=item reparse
+
+Process only bundles where the root node has the attribute C<reparse> set.
 
 =back
 
@@ -134,5 +178,12 @@ but the method can be overriden if needed to set.
 
 =cut
 
-# Copyright 2011 Martin Popel
-# This file is distributed under the GNU GPL v2 or later. See $TMT_ROOT/README.
+=head1 AUTHOR
+
+Martin Popel <popel@ufal.mff.cuni.cz>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright © 2011 by Institute of Formal and Applied Linguistics, Charles University in Prague
+
+This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself.

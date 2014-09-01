@@ -4,7 +4,7 @@
 ##***************************************************************
 ##--- Global settings for all policies
 # severity = 5
-severity = 3
+severity = 4
 # force = 0
 # only = 0
 # profile-strictness = warn
@@ -208,7 +208,7 @@ severity = 2
 
 
 ## Write `if($condition){ do_something() }' instead of `do_something() if $condition'.
-[ControlStructures::ProhibitPostfixControls]
+[-ControlStructures::ProhibitPostfixControls]
 # set_themes                         = core cosmetic pbp
 # add_themes                         =
 # severity                           = 2

@@ -1,7 +1,7 @@
 package Treex::Block::Read::BaseAlignedReader;
-BEGIN {
-  $Treex::Block::Read::BaseAlignedReader::VERSION = '0.08170';
-}
+$Treex::Block::Read::BaseAlignedReader::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 with 'Treex::Core::DocumentReader';
@@ -23,7 +23,7 @@ has file_stem => (
 # private attributes
 has _filenames => (
     isa           => 'HashRef[Str]',
-    is            => 'ro',
+    is            => 'rw',
     init_arg      => undef,
     default       => sub { {} },
     documentation => 'mapping zone_label->filenames to be loaded;'
@@ -49,16 +49,14 @@ sub BUILD {
             ( $lang, $sele ) = split /_/, $arg;
         }
         if ( is_lang_code($lang) ) {
-            my $files_string = $args->{$arg};
-            $files_string =~ s/^\s+|\s+$//g;
-            my @files = split( /[ ,]+/, $files_string );
+            my $files = Treex::Core::Files->new({string => $args->{$arg}});
             if ( !$self->_files_per_zone ) {
-                $self->_set_files_per_zone( scalar @files );
+                $self->_set_files_per_zone( $files->number_of_files );
             }
-            elsif ( @files != $self->_files_per_zone ) {
-                log_fatal("All zones must have the same number of files");
+            elsif ( $files->number_of_files != $self->_files_per_zone ) {
+                log_fatal('All zones must have the same number of files: ' . $files->number_of_files . ' != ' . $self->_files_per_zone);
             }
-            $self->_filenames->{$arg} = \@files;
+            $self->_filenames->{$arg} = $files;
         }
         elsif ( $arg =~ /selector|language|scenario/ ) { }
         else                                           { log_warn "$arg is not a zone label (e.g. en_src)"; }
@@ -70,7 +68,8 @@ sub current_filenames {
     my ($self) = @_;
     my $n = $self->_file_number;
     return if $n == 0 || $n > $self->_files_per_zone;
-    return map { $_ => $self->_filenames->{$_}[ $n - 1 ] } keys %{ $self->_filenames };
+    my %result = map { $_ => $self->_filenames->{$_}->filenames->[ $n - 1 ] } keys %{ $self->_filenames };
+    return \%result;
 }
 
 sub next_filenames {
@@ -81,7 +80,7 @@ sub next_filenames {
 
 sub new_document {
     my ( $self, $load_from ) = @_;
-    my %filenames = $self->current_filenames();
+    my %filenames = %{$self->current_filenames()};
     log_fatal "next_filenames() must be called before new_document()" if !%filenames;
 
     my ( $stem, $file_number ) = ( '', '' );
@@ -93,21 +92,30 @@ sub new_document {
         foreach my $zone_label ( keys %filenames ) {
             my $filename = $filenames{$zone_label};
             ( $volume, $dirs, $file ) = File::Spec->splitpath($filename);
-            my ($name) = $file =~ /([^.]+)(?:\..+)?/;    #we gracefully throw away extension, because it is not used
+
+            # Delete file extension, e.g.
+            # file.01.conll -> file.01
+            # cs42.treex.gz -> cs42
+            $file =~ s/\.[^.]+(\.gz)?$//;
+
+            # Substitute standard input for noname.
+            $file =~ s/^-$/noname/;
+
+            # Heuristically delete indication of language&selector from the filename.
             my ( $lang, $sele ) = ( $zone_label, '' );
             if ( $zone_label =~ /_/ ) {
                 ( $lang, $sele ) = split /_/, $zone_label;
             }
-            $name =~ s/[_-]?($lang|$sele|$zone_label)[_-]?//gi;
-            if ( !$name && !$stem ) {
-                $name        = 'noname';
+            $file =~ s/[_-]?($lang|$sele|$zone_label)[_-]?//gi;
+            if ( !$file && !$stem ) {
+                $file        = 'noname';
                 $file_number = undef;
             }
-            if ( $stem !~ /$name/ ) {
+            if ( $stem !~ /$file/ ) {
                 if ( $stem ne '' ) {
                     $stem .= '_';
                 }
-                $stem .= $name;
+                $stem .= $file;
             }
         }
     }
@@ -146,7 +154,7 @@ Treex::Block::Read::BaseAlignedReader - abstract ancestor for parallel-corpora d
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 SYNOPSIS
 

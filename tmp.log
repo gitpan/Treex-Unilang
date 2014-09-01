@@ -1,0 +1,317 @@
+#./postprocess_POD.pl
+#perl -p -i -e 's/^([^#]*Interset)/#\1/' lib/Treex/Core/Node/A.pm
+((dzil test 2>&1 1>&3 | tee test-test.err) 3>&1 1>&2 | tee test-test.out) 2>&1 | tee test-test.mix
+[DZ] building distribution under .build/4xlWyKpbQd for installation
+[DZ] beginning to build Treex-Unilang
+[DZ] dist's main_module is lib/Treex/Unilang.pm
+[DZ] extracting distribution abstract from lib/Treex/Unilang.pm
+[@Basic/ExtraTests] rewriting release test xt/release/pod-coverage.t
+[@Basic/ExtraTests] rewriting release test xt/release/test-version.t
+[@Basic/ExtraTests] rewriting author test xt/author/test-eol.t
+[@Basic/ExtraTests] rewriting release test xt/release/pod-syntax.t
+[@Basic/ExtraTests] rewriting release test xt/release/minimum-version.t
+[@Basic/ExtraTests] rewriting release test xt/release/cpan-changes.t
+[@Basic/ExtraTests] rewriting release test xt/release/unused-vars.t
+[@Basic/ExtraTests] rewriting release test xt/release/mojibake.t
+[@Basic/ExtraTests] rewriting release test xt/release/no-tabs.t
+[@Basic/ExtraTests] rewriting author test xt/author/critic.t
+[@Basic/ExtraTests] rewriting release test xt/release/portability.t
+[@Basic/ExtraTests] rewriting release test xt/release/dist-manifest.t
+[@Basic/ExtraTests] rewriting release test xt/release/distmeta.t
+[@Basic/ExtraTests] rewriting release test xt/release/pod-linkcheck.t
+[PodVersion] couldn't find '=head1 NAME' in lib/Treex/Tool/ProcessUtils.pm, not adding '=head1 VERSION'
+[DZ] writing Treex-Unilang in .build/4xlWyKpbQd
+Checking if your kit is complete...
+Looks good
+Generating a Unix-style Makefile
+Writing Makefile for Treex::Unilang
+Writing MYMETA.yml and MYMETA.json
+make[1]: Entering directory `/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd'
+cp lib/Treex/Block/Read/BaseAlignedReader.pm blib/lib/Treex/Block/Read/BaseAlignedReader.pm
+cp lib/Treex/Block/W2A/TokenizeOnWhitespace.pm blib/lib/Treex/Block/W2A/TokenizeOnWhitespace.pm
+cp lib/Treex/Block/W2A/ResegmentSentences.pm blib/lib/Treex/Block/W2A/ResegmentSentences.pm
+cp lib/Treex/Block/Read/BaseCoNLLReader.pm blib/lib/Treex/Block/Read/BaseCoNLLReader.pm
+cp lib/Treex/Tool/Tagger/Role.pm blib/lib/Treex/Tool/Tagger/Role.pm
+cp lib/Treex/Block/Write/CoNLLX.pm blib/lib/Treex/Block/Write/CoNLLX.pm
+cp lib/Treex/Block/Read/CoNLLX.pm blib/lib/Treex/Block/Read/CoNLLX.pm
+cp lib/Treex/Block/W2A/SegmentOnNewlines.pm blib/lib/Treex/Block/W2A/SegmentOnNewlines.pm
+cp lib/Treex/Block/Read/BaseAlignedTextReader.pm blib/lib/Treex/Block/Read/BaseAlignedTextReader.pm
+cp lib/Treex/Unilang.pm blib/lib/Treex/Unilang.pm
+cp lib/Treex/Block/W2A/AnalysisWithAlignedTrees.pm blib/lib/Treex/Block/W2A/AnalysisWithAlignedTrees.pm
+cp lib/Treex/Block/W2A/TagMorphoDiTa.pm blib/lib/Treex/Block/W2A/TagMorphoDiTa.pm
+cp lib/Treex/Block/W2A/ParseMSTperl.pm blib/lib/Treex/Block/W2A/ParseMSTperl.pm
+cp lib/Treex/Tool/Segment/RuleBased.pm blib/lib/Treex/Tool/Segment/RuleBased.pm
+cp lib/Treex/Block/W2A/Segment.pm blib/lib/Treex/Block/W2A/Segment.pm
+cp lib/Treex/Tool/Tagger/Featurama.pm blib/lib/Treex/Tool/Tagger/Featurama.pm
+cp lib/Treex/Tool/Lexicon/CS.pm blib/lib/Treex/Tool/Lexicon/CS.pm
+cp lib/Treex/Block/W2A/BaseChunkParser.pm blib/lib/Treex/Block/W2A/BaseChunkParser.pm
+cp lib/Treex/Block/W2A/Tag.pm blib/lib/Treex/Block/W2A/Tag.pm
+cp lib/Treex/Tool/Tagger/MorphoDiTa.pm blib/lib/Treex/Tool/Tagger/MorphoDiTa.pm
+cp lib/Treex/Tool/ProcessUtils.pm blib/lib/Treex/Tool/ProcessUtils.pm
+cp lib/Treex/Block/Read/AlignedSentences.pm blib/lib/Treex/Block/Read/AlignedSentences.pm
+cp lib/Treex/Block/W2A/Tokenize.pm blib/lib/Treex/Block/W2A/Tokenize.pm
+Manifying blib/man3/Treex::Block::Read::AlignedSentences.3
+Manifying blib/man3/Treex::Block::Read::BaseAlignedReader.3
+Manifying blib/man3/Treex::Block::Read::BaseAlignedTextReader.3
+Manifying blib/man3/Treex::Block::Read::BaseCoNLLReader.3
+Manifying blib/man3/Treex::Block::Read::CoNLLX.3
+Manifying blib/man3/Treex::Block::W2A::AnalysisWithAlignedTrees.3
+Manifying blib/man3/Treex::Block::W2A::BaseChunkParser.3
+Manifying blib/man3/Treex::Block::W2A::ParseMSTperl.3
+Manifying blib/man3/Treex::Block::W2A::ResegmentSentences.3
+Manifying blib/man3/Treex::Block::W2A::Segment.3
+Manifying blib/man3/Treex::Block::W2A::SegmentOnNewlines.3
+Manifying blib/man3/Treex::Block::W2A::Tag.3
+Manifying blib/man3/Treex::Block::W2A::TagMorphoDiTa.3
+Manifying blib/man3/Treex::Block::W2A::Tokenize.3
+Manifying blib/man3/Treex::Block::W2A::TokenizeOnWhitespace.3
+Manifying blib/man3/Treex::Block::Write::CoNLLX.3
+Manifying blib/man3/Treex::Tool::Lexicon::CS.3
+Manifying blib/man3/Treex::Tool::Segment::RuleBased.3
+Manifying blib/man3/Treex::Tool::Tagger::Featurama.3
+Manifying blib/man3/Treex::Tool::Tagger::MorphoDiTa.3
+Manifying blib/man3/Treex::Tool::Tagger::Role.3
+Manifying blib/man3/Treex::Unilang.3
+make[1]: Leaving directory `/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd'
+make[1]: Entering directory `/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd'
+PERL_DL_NONLAZY=1 /ha/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/bin/perl "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+	(in cleanup) Can't use an undefined value as an ARRAY reference at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/autodie/Scope/GuardStack.pm line 47 during global destruction.
+
+#   Failed test 'no warnings found'
+#   at t/00-compile.t line 70.
+#          got: '1'
+#     expected: '0'
+# Looks like you failed 1 test of 24.
+t/00-compile.t ............... 
+Dubious, test returned 1 (wstat 256, 0x100)
+Failed 1/24 subtests 
+t/aligned_sentences.t ........ ok
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Tool/ProcessUtils.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Tool/ProcessUtils.pm":
+# [TestingAndDebugging::ProhibitNoWarnings] Warnings disabled at line 68, column 9.  (Severity: 4)
+# [InputOutput::ProhibitBarewordFileHandles] Bareword file handle opened at line 69, column 9.  (Severity: 5)
+# [InputOutput::ProhibitTwoArgOpen] Two-argument "open" used at line 69, column 9.  (Severity: 5)
+# [InputOutput::ProhibitTwoArgOpen] Two-argument "open" used at line 117, column 5.  (Severity: 5)
+# [Subroutines::RequireFinalReturn] Subroutine "safewaitpid" does not end with "return" at line 145, column 1.  (Severity: 4)
+# [Variables::RequireLocalizedPunctuationVars] Magic variable "$?" should be assigned as "local" at line 151, column 8.  (Severity: 4)
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Block/W2A/BaseChunkParser.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Block/W2A/BaseChunkParser.pm":
+# [Subroutines::RequireFinalReturn] Subroutine "parse_chunk" does not end with "return" at line 129, column 1.  (Severity: 4)
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Block/W2A/Tag.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Block/W2A/Tag.pm":
+# [BuiltinFunctions::ProhibitStringyEval] Expression form of "eval" at line 53, column 18.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Block/W2A/Tokenize.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Block/W2A/Tokenize.pm":
+# [TestingAndDebugging::ProhibitNoWarnings] Warnings disabled at line 12, column 1.  (Severity: 4)
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Tool/Lexicon/CS.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Tool/Lexicon/CS.pm":
+# [InputOutput::RequireEncodingWithUTF8Layer] I/O layer ":utf8" used at line 127, column 1.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Tool/Segment/RuleBased.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Tool/Segment/RuleBased.pm":
+# [ControlStructures::ProhibitMutatingListFunctions] Don't modify $_ in list functions at line 280, column 12.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "blib/lib/Treex/Tool/Tagger/Featurama.pm"'
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/Perl/Critic.pm line 110.
+# 
+# Perl::Critic found these violations in "blib/lib/Treex/Tool/Tagger/Featurama.pm":
+# [Subroutines::RequireFinalReturn] Subroutine "DEMOLISH" does not end with "return" at line 128, column 1.  (Severity: 4)
+# Looks like you failed 7 tests of 23.
+t/author-critic.t ............ 
+Dubious, test returned 7 (wstat 1792, 0x700)
+Failed 7/23 subtests 
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/ResegmentSentences.pm' on line 13: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 13: [\s] : [\s][\s][\s][\s]documentation[\s]=>[\s]'remove=no[\s][\s][\s]...[\s]Do[\s]not[\s]delete[\s]any[\s]bundles[\s](default).[\s]'[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/Segment.pm' on line 112: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 112: [\s] : not[\s]by[\s]full[\s]tokenization.[\s]Set[\s]to[\s]zero[\s]to[\s]disable[\s]this[\s]function[\s]completely[\s](default[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/SegmentOnNewlines.pm' on line 23: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 23: [\s][\s][\s][\s] : sub[\s]process_doc_zone[\s]{[\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/Tokenize.pm' on line 31: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 31: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/TokenizeOnWhitespace.pm' on line 30: [\s][\s][\s][\s][\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 30: [\s][\s][\s][\s][\s][\s][\s][\s] : [\s][\s][\s][\s][\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/BaseChunkParser.pm' on line 38: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 38: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/W2A/AnalysisWithAlignedTrees.pm' on line 161: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 161: [\s] : [\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s]#[\s]lemma[\s]without[\s]details[\s]-[\s]works[\s]only[\s]for[\s]Czech[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/Read/BaseCoNLLReader.pm' on line 9: [\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 9: [\s][\s][\s] : sub[\s]next_document_text[\s]{[\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Block/Read/CoNLLX.pm' on line 71: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 71: [\s] : The[\s]sentences[\s]are[\s]stored[\s]into[\s]L<bundles|Treex::Core::Bundle>[\s]in[\s]the[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Tool/Tagger/Featurama.pm' on line 262: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 262: [\s] : This[\s]method[\s]should[\s]return[\s]an[\s]array[\s]of[\s]features,[\s]given[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Tool/Tagger/MorphoDiTa.pm' on line 21: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 21: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Tool/Segment/RuleBased.pm' on line 174: [\s][\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 174: [\s][\s][\s][\s][\s] : [\s][\s][\s][\s][\s][\s][\s][\s]neg_pre[\s]=>[\s]'[0-9]\h*(?=;\h*[0-9]+(?:[^\.0-9]|\.[0-9]|$))',[\s][\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/lib/Treex/Tool/Lexicon/CS.pm' on line 161: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 161: [\s][\s][\s][\s] : [\s][\s][\s][\s]my[\s]($lemma,[\s]$strip_numbers)[\s]=[\s]@_;[\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/t/morphodita.t' on line 26: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 26: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/Read/BaseCoNLLReader.pm' on line 9: [\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 9: [\s][\s][\s] : sub[\s]next_document_text[\s]{[\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/Read/CoNLLX.pm' on line 71: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 71: [\s] : The[\s]sentences[\s]are[\s]stored[\s]into[\s]L<bundles|Treex::Core::Bundle>[\s]in[\s]the[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/TokenizeOnWhitespace.pm' on line 30: [\s][\s][\s][\s][\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 30: [\s][\s][\s][\s][\s][\s][\s][\s] : [\s][\s][\s][\s][\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/ResegmentSentences.pm' on line 13: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 13: [\s] : [\s][\s][\s][\s]documentation[\s]=>[\s]'remove=no[\s][\s][\s]...[\s]Do[\s]not[\s]delete[\s]any[\s]bundles[\s](default).[\s]'[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/SegmentOnNewlines.pm' on line 23: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 23: [\s][\s][\s][\s] : sub[\s]process_doc_zone[\s]{[\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/AnalysisWithAlignedTrees.pm' on line 161: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 161: [\s] : [\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s][\s]#[\s]lemma[\s]without[\s]details[\s]-[\s]works[\s]only[\s]for[\s]Czech[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/Segment.pm' on line 112: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 112: [\s] : not[\s]by[\s]full[\s]tokenization.[\s]Set[\s]to[\s]zero[\s]to[\s]disable[\s]this[\s]function[\s]completely[\s](default[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/BaseChunkParser.pm' on line 38: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 38: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Block/W2A/Tokenize.pm' on line 31: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 31: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Tool/Tagger/Featurama.pm' on line 262: [\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 262: [\s] : This[\s]method[\s]should[\s]return[\s]an[\s]array[\s]of[\s]features,[\s]given[\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Tool/Tagger/MorphoDiTa.pm' on line 21: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 21: [\s][\s][\s][\s] : [\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Tool/Segment/RuleBased.pm' on line 174: [\s][\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 174: [\s][\s][\s][\s][\s] : [\s][\s][\s][\s][\s][\s][\s][\s]neg_pre[\s]=>[\s]'[0-9]\h*(?=;\h*[0-9]+(?:[^\.0-9]|\.[0-9]|$))',[\s][\s][\s][\s][\s]
+
+#   Failed test 'No incorrect line endings in '/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd/blib/lib/Treex/Tool/Lexicon/CS.pm' on line 161: [\s][\s][\s][\s] '
+#   at /net/work/projects/perlbrew/Ubuntu/10.04/x86_64/perls/perl-5.18.2-nothread/lib/site_perl/5.18.2/Test/EOL.pm line 144.
+#   Problem Lines: 
+# line 161: [\s][\s][\s][\s] : [\s][\s][\s][\s]my[\s]($lemma,[\s]$strip_numbers)[\s]=[\s]@_;[\s][\s][\s][\s]
+# Looks like you failed 27 tests of 71.
+t/author-test-eol.t .......... 
+Dubious, test returned 27 (wstat 6912, 0x1b00)
+Failed 27/71 subtests 
+t/base_aligned.t ............. ok
+t/base_aligned_text.t ........ ok
+t/morphodita.t ............... skipped: Cannot load Ufal::MorphoDiTa
+t/release-cpan-changes.t ..... skipped: these tests are for release candidate testing
+t/release-dist-manifest.t .... skipped: these tests are for release candidate testing
+t/release-distmeta.t ......... skipped: these tests are for release candidate testing
+t/release-minimum-version.t .. skipped: these tests are for release candidate testing
+t/release-mojibake.t ......... skipped: these tests are for release candidate testing
+t/release-no-tabs.t .......... skipped: these tests are for release candidate testing
+t/release-pod-coverage.t ..... skipped: these tests are for release candidate testing
+t/release-pod-linkcheck.t .... skipped: these tests are for release candidate testing
+t/release-pod-syntax.t ....... skipped: these tests are for release candidate testing
+t/release-portability.t ...... skipped: these tests are for release candidate testing
+t/release-test-version.t ..... skipped: these tests are for release candidate testing
+t/release-unused-vars.t ...... skipped: these tests are for release candidate testing
+t/resegment_sentences.t ...... ok
+t/rule_based.t ............... ok
+t/segment_on_nl.t ............ ok
+t/tokenize.t ................. ok
+t/tokenize_on_whitespace.t ... ok
+
+Test Summary Report
+-------------------
+t/00-compile.t             (Wstat: 256 Tests: 24 Failed: 1)
+  Failed test:  24
+  Non-zero exit status: 1
+t/author-critic.t          (Wstat: 1792 Tests: 23 Failed: 7)
+  Failed tests:  2, 9, 14, 16, 19-21
+  Non-zero exit status: 7
+t/author-test-eol.t        (Wstat: 6912 Tests: 71 Failed: 27)
+  Failed tests:  3-8, 10, 16-17, 20-21, 23-24, 32, 51-52
+                55-58, 61-62, 64, 68-71
+  Non-zero exit status: 27
+Files=24, Tests=145, 39 wallclock secs ( 0.13 usr  0.02 sys + 33.32 cusr  4.33 csys = 37.80 CPU)
+Result: FAIL
+Failed 3/24 test programs. 35/145 subtests failed.
+make[1]: *** [test_dynamic] Error 255
+make[1]: Leaving directory `/a/merkur3/varis/treex/treex/support/packaging/Treex-Unilang/.build/4xlWyKpbQd'
+error running make test

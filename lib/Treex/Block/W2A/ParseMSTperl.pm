@@ -1,7 +1,7 @@
 package Treex::Block::W2A::ParseMSTperl;
-BEGIN {
-  $Treex::Block::W2A::ParseMSTperl::VERSION = '0.08170';
-}
+$Treex::Block::W2A::ParseMSTperl::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 extends 'Treex::Block::W2A::BaseChunkParser';
@@ -26,13 +26,13 @@ has 'model_from_share' => (
 has 'model_name' => (
     is      => 'ro',
     isa     => 'Str',
-    default => 'conll_2007_small',
+    required => 1,
 );
 
 has 'model_dir' => (
     is      => 'ro',
     isa     => 'Str',
-    default => 'data/models/parser/mst_perl/en',
+    default => 'data/models/parser/mst_perl',
 );
 
 has 'model_gz' => (
@@ -85,19 +85,21 @@ sub _build_parser {
         :
             $model_file_name
     );
+    log_info "Loading MSTperl::Parser model $model_file";
     $parser->load_model($model_file);
 
     return $parser;
 }
 
-sub BUILD {
-    my $self = shift;
-    
+override 'process_start' => sub {
+    my ($self) = @_;
+    super();
+
     # enforce parser initialization
     $self->parser;
-    
+
     return;
-}
+};
 
 sub parse_chunk {
     my ( $self, @a_nodes ) = @_;
@@ -190,7 +192,7 @@ Treex::Block::W2A::ParseMSTperl
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 DECRIPTION
 
@@ -202,9 +204,13 @@ This is its reimplementation in Perl, with simplified MIRA algorithm
 Settings are provided via a config file accompanying the model file.
 The script loads the model C<model_dir/model_name.model>
 and its config <model_dir/model_name.config>.
-The default is the English model
-C<share/data/models/mst_perl_parser/en/conll_2007.model>
-(and C<conll_2007.config> in the same directory).
+
+You must set a model to use the parser, e.g. C<model_name=en/conll_2007_best>
+(if the default model dir C<data/models/parser/mst_perl> suits you;
+otherwise, also set C<model_dir> to a directory in which you have downloaded the
+models from
+C<http://ufallab.ms.mff.cuni.cz/tectomt/share/data/models/mst_perl_parser/> or
+obtained in another way.)
 
 It is not sensible to change the config file unless you decide to train
 your own model.

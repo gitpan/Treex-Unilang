@@ -1,10 +1,8 @@
 package Treex::Unilang;
-BEGIN {
-  $Treex::Unilang::VERSION = '0.08170';
-}
+$Treex::Unilang::VERSION = '0.13095';
 use strict;
 use warnings;
-use Treex::Core 0.08157;
+use Treex::Core;
 
 1;
 
@@ -20,7 +18,7 @@ Treex::Unilang - collection of blocks parametrized by language and language inde
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 DESCRIPTION
 

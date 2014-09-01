@@ -1,12 +1,10 @@
 package Treex::Block::W2A::SegmentOnNewlines;
-BEGIN {
-  $Treex::Block::W2A::SegmentOnNewlines::VERSION = '0.08170';
-}
+$Treex::Block::W2A::SegmentOnNewlines::VERSION = '0.13095';
+use strict;
+use warnings;
 use Moose;
 use Treex::Core::Common;
 extends 'Treex::Core::Block';
-
-has '+language' => ( required => 1 );
 
 has [qw(allow_empty_sentences delete_empty_sentences )] => (
     is      => 'ro',
@@ -16,10 +14,17 @@ has [qw(allow_empty_sentences delete_empty_sentences )] => (
 
 sub process_document {
     my ( $self, $document ) = @_;
-    my $doczone = $document->get_zone( $self->language, $self->selector );
-    log_fatal 'The document does not contain a ' . $self->_doczone_name if !$doczone;
+    foreach my $doczone ($self->get_selected_zones($document->get_all_zones())){
+        $self->process_doc_zone($doczone, $document);
+    }
+    return;
+}
+
+sub process_doc_zone {    
+    my ( $self, $doczone, $document ) = @_;
+
     my $text = $doczone->text;
-    log_fatal $self->_doczone_name . ' contains no "text" attribute' if !defined $text;
+    log_fatal 'DocZone ' . $doczone->get_label() . ' contains no "text" attribute' if !defined $text;
 
     my @sentences;
     foreach my $sentence ( map { $self->normalize_sentence($_) } $self->get_segments($text) ) {
@@ -27,7 +32,7 @@ sub process_document {
             if ( $self->delete_empty_sentences ) {
             }
             elsif ( !$self->allow_empty_sentences ) {
-                log_fatal 'text in ' . $self->_doczone_name
+                log_fatal 'text in DocZone ' . $doczone->get_label()
                     . ' contains empty sentences. Consider using'
                     . ' the (allow|delete)_empty_sentences option.';
             }
@@ -51,21 +56,14 @@ sub process_document {
     elsif ( @bundles != @sentences ) {
         log_fatal 'The document already contained bundles, but the number'
             . ' of bundles is different than the number of sentences segmented'
-            . ' from the' . $self->_doczone_name;
+            . ' from the DocZone ' . $doczone->get_label;
     }
     while (@bundles) {
         my $bundle = shift @bundles;
-        my $zone = $bundle->create_zone( $self->language, $self->selector );
+        my $zone = $bundle->create_zone( $doczone->language, $doczone->selector );
         $zone->set_sentence( shift @sentences );
     }
     return 1;
-}
-
-sub _doczone_name {
-    my ($self) = @_;
-    return 'DocZone for language='
-        . $self->language
-        . ( $self->selector ne '' ? ' selector=' . $self->selector : '' );
 }
 
 sub get_segments {
@@ -102,7 +100,7 @@ Treex::Block::W2A::SegmentOnNewlines - segment text on new lines
 
 =head1 VERSION
 
-version 0.08170
+version 0.13095
 
 =head1 DESCRIPTION
 
@@ -120,7 +118,7 @@ This means that this block (or its derivatives) can be used in this way:
 
 This class detects sentences based on the newlines in the source text,
 but it can be used as an ancestor for more apropriate segmentations
-by overriding the method C<segment_text>.
+by overriding the method C<get_segments>.
 
 =head1 ATTRIBUTES
 
@@ -142,13 +140,15 @@ If none of the previous attributes is set and empty sentence found, fatal is rai
 
 =over 4
 
-=item get_segments()
+=item my @sentences = $self->get_segments($text)
 
-This method produces segments from text given as parameter, can be overriden.
+This method produces a list of segments (sentences) from the given text string.
+This implementation only splits on newlines.
+It is supposed to be overriden in subclasses.
 
-=item normalize_sentence()
+=item my $norm_sentence = $self->normalize_sentence($raw_sentence)
 
-This method does sentence normalization e.g. trims initial and terminal whitespaces.
+This method does sentence normalization, e.g. trims initial and terminal whitespaces.
 
 =back
 
